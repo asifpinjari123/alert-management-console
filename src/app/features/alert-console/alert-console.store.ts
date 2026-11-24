@@ -22,9 +22,10 @@ const EMPTY_FILTERS: AlertFilters = {
 @Injectable({ providedIn: 'root' })
 export class AlertConsoleStore {
   private readonly alertApi = inject(AlertApiService);
+  // Distinguishes the save whose rollback may still update this alert.
   private readonly activeResolutionOperations = new Map<string, symbol>();
 
-  // STATE
+  // Keep source data and transient UI state canonical; the view values below are derived.
   readonly alerts = signal<Alert[]>(this.alertApi.loadAlerts());
   readonly filters = signal<AlertFilters>({ ...EMPTY_FILTERS });
   readonly selectedAlertId = signal<string | null>(null);
@@ -32,7 +33,7 @@ export class AlertConsoleStore {
   readonly resolveFormAlertId = signal<string | null>(null);
   readonly resolutionError = signal<string | null>(null);
 
-  // DERIVED STATE
+  // Derive table and detail values rather than maintaining duplicate state.
   readonly filteredAlerts = computed(() =>
     sortNewestFirst(filterAlerts(this.alerts(), this.filters())),
   );
@@ -54,7 +55,6 @@ export class AlertConsoleStore {
     );
   });
 
-  // ACTIONS
   setFilter<K extends keyof AlertFilters>(filter: K, value: AlertFilters[K]): void {
     this.filters.update((currentFilters) => ({ ...currentFilters, [filter]: value }));
   }
@@ -94,6 +94,7 @@ export class AlertConsoleStore {
       return;
     }
 
+    // Apply the optimistic status and history entry before awaiting the simulated save.
     const operationToken = Symbol(id);
     const resolutionEntry: AlertHistoryEntry = {
       state: RESOLVED_STATUS,
@@ -133,6 +134,7 @@ export class AlertConsoleStore {
           }
 
           const stillHasOptimisticEntry = currentAlert.history.includes(resolutionEntry);
+          // Remove only this attempt's entry, and do not overwrite a newer status transition.
           return {
             ...currentAlert,
             status:

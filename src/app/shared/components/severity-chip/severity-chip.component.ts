@@ -5,7 +5,6 @@ import { AlertSeverity } from '../../../core/models/alert.model';
 
 @Component({
   selector: 'app-severity-chip',
-  imports: [],
   templateUrl: './severity-chip.component.html',
   styleUrl: './severity-chip.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

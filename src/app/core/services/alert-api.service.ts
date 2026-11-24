@@ -6,6 +6,7 @@ import { generateMockAlerts } from '../utils/mock-alert-generator';
 
 export const SAVE_DELAY_MS = 800;
 export const FAILURE_RATE = 0.2;
+// Tests inject predictable values to cover both simulated save outcomes.
 export const ALERT_SAVE_RANDOM = new InjectionToken<() => number>('ALERT_SAVE_RANDOM', {
   providedIn: 'root',
   factory: () => Math.random,

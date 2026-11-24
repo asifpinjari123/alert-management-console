@@ -25,6 +25,7 @@ export class ResolveAlertFormComponent {
   protected readonly form = new FormGroup({ note: this.noteControl });
 
   submitResolution(): void {
+    // Keep programmatic submissions subject to the same saving and validation guards as the UI.
     if (this.isSaving()) {
       return;
     }

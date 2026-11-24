@@ -17,6 +17,7 @@ export interface AlertFilters {
   source: AlertSource | typeof ALL_FILTER_VALUE;
 }
 
+// ALL disables a criterion; every other selected filter must match the alert.
 export function filterAlerts(alerts: Alert[], filters: AlertFilters): Alert[] {
   return alerts.filter((alert) => {
     const matchesStatus = filters.status === ALL_FILTER_VALUE || alert.status === filters.status;
@@ -36,6 +37,7 @@ export function sortNewestFirst(alerts: Alert[]): Alert[] {
 }
 
 export function sortHistoryChronologically(history: AlertHistoryEntry[]): AlertHistoryEntry[] {
+  // Preserve insertion order for equal timestamps to keep timeline ordering deterministic.
   return history
     .map((entry, index) => ({ entry, index }))
     .sort(

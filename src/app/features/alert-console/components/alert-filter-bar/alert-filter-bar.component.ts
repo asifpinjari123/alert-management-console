@@ -14,7 +14,6 @@ import { AlertFilters } from '../../alert-console.utils';
 
 @Component({
   selector: 'app-alert-filter-bar',
-  imports: [],
   templateUrl: './alert-filter-bar.component.html',
   styleUrl: './alert-filter-bar.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

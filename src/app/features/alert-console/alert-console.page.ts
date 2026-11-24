@@ -24,6 +24,7 @@ export class AlertConsolePageComponent {
       return;
     }
 
+    // The store exposes failures inline, so consume the rejected promise here.
     void this.store.resolveAlert(alert.id, note).catch(() => undefined);
   }
 }
