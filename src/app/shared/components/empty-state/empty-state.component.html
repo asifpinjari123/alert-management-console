@@ -1,0 +1,10 @@
+<!-- Empty content message with an optional clear or retry action. -->
+<section class="empty-state" aria-live="polite">
+  <h3>{{ title() }}</h3>
+  <p>{{ description() }}</p>
+  @if (actionLabel()) {
+    <button type="button" class="empty-state__action" (click)="action.emit()">
+      {{ actionLabel() }}
+    </button>
+  }
+</section>

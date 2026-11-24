@@ -1,0 +1,60 @@
+<!-- Selected alert details, ordered history, and eligible resolve action. -->
+<aside class="detail-panel" aria-label="Alert details">
+  @if (alert(); as selectedAlert) {
+    <header class="detail-panel__header">
+      <h2>{{ selectedAlert.id }} <span>— detail</span></h2>
+      <app-status-chip [status]="selectedAlert.status" />
+    </header>
+
+    <dl class="detail-panel__metadata">
+      <div>
+        <dt>Source</dt>
+        <dd>{{ selectedAlert.source }}</dd>
+      </div>
+      <div>
+        <dt>Severity</dt>
+        <dd><app-severity-chip [severity]="selectedAlert.severity" /></dd>
+      </div>
+      <div>
+        <dt>Created</dt>
+        <dd>{{ selectedAlert.createdAt | date: 'dd MMM yyyy, HH:mm' : 'UTC' }}</dd>
+      </div>
+    </dl>
+
+    <section class="detail-panel__history" aria-labelledby="history-title">
+      <h3 id="history-title">Timeline</h3>
+      <app-alert-history-timeline [history]="selectedAlert.history" />
+    </section>
+
+    @if (isResolvable(selectedAlert) || isSaving() || showResolveForm()) {
+      <section class="detail-panel__resolve" aria-label="Resolve alert">
+        @if (showResolveForm()) {
+          <app-resolve-alert-form
+            [isSaving]="isSaving()"
+            [errorMessage]="errorMessage()"
+            (resolve)="resolve.emit($event)"
+            (cancel)="closeResolve.emit()"
+          />
+        } @else {
+          <button type="button" [disabled]="isSaving()" (click)="openResolve.emit()">
+            @if (isSaving()) {
+              <app-loading-spinner label="Saving resolution" />
+              Saving...
+            } @else {
+              Resolve
+            }
+          </button>
+        }
+        <aside class="detail-panel__tip">
+          <h3>Optimistic resolution</h3>
+          <p>If saving fails, the previous status and timeline are restored.</p>
+        </aside>
+      </section>
+    }
+  } @else {
+    <app-empty-state
+      title="Select an alert"
+      description="Choose a row to inspect alert details and its state history."
+    />
+  }
+</aside>

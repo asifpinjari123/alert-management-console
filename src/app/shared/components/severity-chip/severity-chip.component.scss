@@ -1,0 +1,32 @@
+// Severity colors pair with explicit labels for accessible identification.
+.severity-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 21px;
+  padding: 2px 9px;
+  border-radius: 999px;
+  font-size: 0.66rem;
+  font-weight: 750;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.severity-chip--critical {
+  background: #8d1d27;
+  color: #fff;
+}
+
+.severity-chip--high {
+  background: #e74840;
+  color: #fff;
+}
+
+.severity-chip--medium {
+  background: #f3b525;
+  color: #fff;
+}
+
+.severity-chip--low {
+  background: #2eae67;
+  color: #fff;
+}

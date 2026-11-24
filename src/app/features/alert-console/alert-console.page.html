@@ -1,0 +1,42 @@
+<!-- Main console layout composed from controlled child components. -->
+<main class="console-page">
+  <header class="console-page__header">
+    <h1>Alert Console <span>— Alert Resolution</span></h1>
+  </header>
+
+  <div class="console-layout">
+    <section class="console-list" aria-labelledby="alerts-heading">
+      <header class="console-list__header">
+        <h2 id="alerts-heading">Alerts ({{ store.totalCount() }})</h2>
+      </header>
+
+      <app-alert-filter-bar
+        [filters]="store.filters()"
+        [filteredCount]="store.filteredCount()"
+        [totalCount]="store.totalCount()"
+        [hasActiveFilters]="store.hasActiveFilters()"
+        (statusChange)="store.setStatusFilter($event)"
+        (severityChange)="store.setSeverityFilter($event)"
+        (sourceChange)="store.setSourceFilter($event)"
+        (clearFilters)="store.clearFilters()"
+      />
+
+      <app-alert-table
+        [alerts]="store.filteredAlerts()"
+        [selectedAlertId]="store.selectedAlertId()"
+        (alertSelected)="store.selectAlert($event)"
+        (clearFilters)="store.clearFilters()"
+      />
+    </section>
+
+    <app-alert-detail-panel
+      [alert]="store.selectedAlert()"
+      [isSaving]="store.selectedAlertIsSaving()"
+      [showResolveForm]="store.resolveFormAlertId() === store.selectedAlert()?.id"
+      [errorMessage]="store.resolutionError()"
+      (openResolve)="store.openResolveForm(store.selectedAlertId() ?? '')"
+      (closeResolve)="store.closeResolveForm()"
+      (resolve)="onResolve($event)"
+    />
+  </div>
+</main>

@@ -1,0 +1,6 @@
+// Root component styles for the Alert Console shell.
+// The feature page owns its own layout styles.
+:host {
+  display: block;
+  min-height: 100vh;
+}

@@ -1,0 +1,18 @@
+<!-- Chronological state history with UTC timestamps and optional notes. -->
+<ol class="history-timeline">
+  @for (entry of chronologicalHistory(); track $index) {
+    <li
+      class="history-timeline__entry"
+      [class.history-timeline__entry--escalated]="entry.state === 'ESCALATED'"
+      [class.history-timeline__entry--resolved]="entry.state === 'RESOLVED'"
+    >
+      <div class="history-timeline__details">
+        <span class="history-timeline__state">{{ entry.state.replace('_', ' ') }}</span>
+        <time [attr.datetime]="entry.ts">{{ entry.ts | date: 'dd MMM yyyy, HH:mm' : 'UTC' }}</time>
+      </div>
+      @if (entry.note) {
+        <p>{{ entry.note }}</p>
+      }
+    </li>
+  }
+</ol>

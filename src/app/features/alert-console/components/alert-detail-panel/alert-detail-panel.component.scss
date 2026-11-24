@@ -1,0 +1,156 @@
+// Frames metadata, history, and resolution controls as a separate reading column.
+:host {
+  display: block;
+}
+
+.detail-panel {
+  display: grid;
+  align-content: start;
+  gap: 18px;
+  height: 100%;
+  min-height: 0;
+  padding: 20px;
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+
+.detail-panel__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #e8edf3;
+}
+
+.detail-panel__header h2 {
+  margin: 0;
+  color: #263449;
+  font-size: 1.08rem;
+}
+
+.detail-panel__header h2 span {
+  font-weight: 600;
+}
+
+.detail-panel__metadata {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 10px;
+  margin: 0;
+}
+
+.detail-panel__metadata > div {
+  min-width: 0;
+  padding: 11px 12px;
+  border: 1px solid #edf0f4;
+  border-radius: var(--radius-control);
+  background: #f8fafd;
+}
+
+.detail-panel__metadata > div:last-child {
+  grid-column: 1 / -1;
+}
+
+.detail-panel__metadata dt {
+  display: block;
+  margin: 0 0 5px;
+  color: var(--color-muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.detail-panel__metadata dd {
+  display: block;
+  margin: 0;
+  color: #354257;
+  font-size: 0.83rem;
+  overflow-wrap: anywhere;
+}
+
+.detail-panel__history {
+  padding-top: 2px;
+}
+
+.detail-panel__history h3 {
+  margin: 0 0 12px;
+  color: #354257;
+  font-size: 0.9rem;
+}
+
+.detail-panel__resolve {
+  display: grid;
+  justify-items: stretch;
+  gap: 14px;
+  padding-top: 16px;
+  border-top: 1px solid #e8edf3;
+}
+
+.detail-panel__resolve app-resolve-alert-form {
+  display: block;
+  width: 100%;
+  min-width: 0;
+}
+
+.detail-panel__resolve > button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 132px;
+  min-height: 40px;
+  padding: 0 18px;
+  border: 0;
+  border-radius: var(--radius-control);
+  background: #27a864;
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.detail-panel__resolve > button:hover:not(:disabled) {
+  background: #218e55;
+}
+
+.detail-panel__tip {
+  width: 100%;
+  padding: 13px 14px;
+  border: 1px solid #d5e1f1;
+  border-radius: var(--radius-control);
+  background: #f2f7ff;
+}
+
+.detail-panel__tip h3 {
+  margin: 0 0 6px;
+  color: #2f70e8;
+  font-size: 0.82rem;
+}
+
+.detail-panel__tip p {
+  margin: 0;
+  color: #596579;
+  font-size: 0.76rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 860px) {
+  .detail-panel {
+    height: auto;
+    padding: 18px;
+  }
+}
+
+@media (max-width: 600px) {
+  .detail-panel {
+    gap: 15px;
+    padding: 16px 14px;
+  }
+
+  .detail-panel__metadata {
+    gap: 8px;
+  }
+
+  .detail-panel__metadata > div {
+    padding: 10px;
+  }
+}

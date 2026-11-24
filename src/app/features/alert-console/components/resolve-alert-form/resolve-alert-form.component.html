@@ -1,0 +1,50 @@
+<!-- Required note form with inline validation and pending-save feedback. -->
+<form class="resolve-form" [formGroup]="form" (ngSubmit)="submitResolution()" novalidate>
+  <label for="resolution-note">Resolution note</label>
+  <input
+    id="resolution-note"
+    type="text"
+    formControlName="note"
+    required
+    placeholder="Restarted consumer group"
+    [attr.aria-invalid]="noteControl.invalid && (noteControl.touched || noteControl.dirty)"
+    aria-describedby="resolution-note-error resolution-note-count"
+  />
+
+  @if (noteControl.invalid && (noteControl.touched || noteControl.dirty)) {
+    <p id="resolution-note-error" class="resolve-form__error" role="alert">
+      @if (noteControl.hasError('whitespaceOnly') && noteControl.value.length > 0) {
+        The note cannot contain only whitespace.
+      } @else if (noteControl.hasError('required')) {
+        Add a resolution note.
+      }
+    </p>
+  }
+
+  <p id="resolution-note-count" class="resolve-form__count" aria-live="polite">
+    {{ noteControl.value.length }} characters
+  </p>
+
+  @if (errorMessage()) {
+    <p class="resolve-form__error" role="alert">{{ errorMessage() }}</p>
+  }
+
+  <div class="resolve-form__actions">
+    <button type="submit" [disabled]="isSaving()">
+      @if (isSaving()) {
+        <app-loading-spinner label="Saving resolution" />
+        Saving...
+      } @else {
+        Resolve
+      }
+    </button>
+    <button
+      type="button"
+      class="resolve-form__cancel"
+      [disabled]="isSaving()"
+      (click)="cancel.emit()"
+    >
+      Cancel
+    </button>
+  </div>
+</form>

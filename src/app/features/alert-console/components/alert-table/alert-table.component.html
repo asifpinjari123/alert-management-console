@@ -1,0 +1,40 @@
+<!-- Keyboard-accessible alert table with an explicit empty state. -->
+<div class="alert-table-wrap">
+  @if (alerts().length === 0) {
+    <app-empty-state
+      title="No alerts found"
+      description="Try changing or clearing the current filters."
+      actionLabel="Clear filters"
+      (action)="clearFilters.emit()"
+    />
+  } @else {
+    <table class="alert-table">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Source</th>
+          <th scope="col">Severity</th>
+          <th scope="col">Status</th>
+          <th scope="col">Created</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (alert of alerts(); track alert.id) {
+          <tr
+            tabindex="0"
+            [attr.aria-selected]="selectedAlertId() === alert.id"
+            [class.alert-table__row--selected]="selectedAlertId() === alert.id"
+            (click)="alertSelected.emit(alert.id)"
+            (keydown)="onRowKeydown($event, alert.id)"
+          >
+            <th scope="row">{{ alert.id }}</th>
+            <td>{{ alert.source }}</td>
+            <td><app-severity-chip [severity]="alert.severity" /></td>
+            <td><app-status-chip [status]="alert.status" /></td>
+            <td>{{ alert.createdAt | date: 'dd MMM yyyy, HH:mm' : 'UTC' }} UTC</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
+</div>

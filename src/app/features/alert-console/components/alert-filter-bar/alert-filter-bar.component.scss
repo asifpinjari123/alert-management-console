@@ -1,0 +1,101 @@
+// Native selectors preserve familiar keyboard and screen-reader behavior.
+.filter-bar {
+  display: flex;
+  align-items: end;
+  flex-wrap: wrap;
+  gap: 10px 12px;
+  padding: 12px 20px 16px;
+  border-bottom: 1px solid #e8edf3;
+}
+
+.filter-bar__controls {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(120px, 1fr));
+  flex: 1 1 500px;
+  gap: 10px;
+}
+
+.filter-bar label {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+  color: var(--color-muted);
+  font-size: 0.72rem;
+  font-weight: 650;
+}
+
+.filter-bar select {
+  width: 100%;
+  min-height: 40px;
+  padding: 0 32px 0 11px;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-control);
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-size: 0.82rem;
+}
+
+.filter-bar__count {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 0.76rem;
+  white-space: nowrap;
+}
+
+.filter-bar__count strong {
+  color: var(--color-ink);
+  font-weight: 750;
+}
+
+.filter-bar__clear {
+  min-height: 36px;
+  padding: 0 11px;
+  border: 1px solid #cbd9ed;
+  border-radius: var(--radius-control);
+  background: var(--color-accent-soft);
+  color: #2867cc;
+  font-size: 0.76rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.filter-bar__clear:disabled {
+  border-color: #e4e9ef;
+  background: #f4f6f9;
+  color: #9aa4b2;
+}
+
+@media (max-width: 1100px) {
+  .filter-bar {
+    padding-inline: 16px;
+  }
+
+  .filter-bar__controls {
+    flex-basis: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .filter-bar {
+    gap: 10px;
+    padding: 12px 14px 14px;
+  }
+
+  .filter-bar__controls {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .filter-bar select {
+    min-height: 42px;
+    font-size: 0.78rem;
+  }
+
+  .filter-bar__count {
+    align-self: center;
+  }
+
+  .filter-bar__clear {
+    min-height: 38px;
+  }
+}

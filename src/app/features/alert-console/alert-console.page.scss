@@ -1,0 +1,142 @@
+// Main workspace grid and responsive behavior for the console page.
+.console-page {
+  width: min(100%, 1760px);
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 28px clamp(18px, 2.2vw, 36px) 32px;
+}
+
+.console-page__header {
+  display: flex;
+  align-items: center;
+  min-height: 72px;
+  margin-bottom: 18px;
+  padding: 16px 22px;
+  border: 1px solid #25364c;
+  border-radius: var(--radius-panel);
+  background: var(--color-header);
+  box-shadow: var(--shadow-panel);
+}
+
+.console-page__header h1 {
+  margin: 0;
+  color: #fff;
+  font-size: 1.25rem;
+  line-height: 1.15;
+}
+
+.console-page__header h1 span {
+  margin: 0 5px;
+  color: #cbd6e5;
+}
+
+.console-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.86fr) minmax(340px, 1fr);
+  align-items: stretch;
+  gap: 18px;
+}
+
+.console-list,
+app-alert-detail-panel {
+  min-width: 0;
+  overflow: hidden;
+  height: clamp(34rem, calc(100vh - 11.5rem), 52rem);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-panel);
+  background: var(--color-paper);
+  box-shadow: var(--shadow-panel);
+}
+
+.console-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.console-list__header {
+  padding: 18px 20px 4px;
+}
+
+.console-list__header h2 {
+  margin: 0;
+  color: #263449;
+  font-size: 1rem;
+  font-weight: 750;
+}
+
+app-alert-table {
+  display: block;
+  flex: 1;
+  min-height: 0;
+}
+
+@media (min-width: 861px) and (max-width: 1100px) {
+  .console-page {
+    padding: 22px 20px 26px;
+  }
+
+  .console-layout {
+    grid-template-columns: minmax(0, 1.55fr) minmax(300px, 1fr);
+    gap: 14px;
+  }
+
+  .console-list,
+  app-alert-detail-panel {
+    height: clamp(32rem, calc(100vh - 10.5rem), 46rem);
+  }
+}
+
+@media (max-width: 860px) {
+  .console-page {
+    padding: 20px 16px 24px;
+  }
+
+  .console-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  .console-list {
+    height: clamp(24rem, 58vh, 38rem);
+  }
+
+  app-alert-detail-panel {
+    height: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .console-page {
+    padding: 14px 12px 20px;
+  }
+
+  .console-page__header {
+    min-height: 60px;
+    margin-bottom: 12px;
+    padding: 13px 15px;
+  }
+
+  .console-page__header h1 {
+    font-size: 1.05rem;
+    line-height: 1.35;
+  }
+
+  .console-page__header h1 span {
+    display: block;
+    margin: 2px 0 0;
+    font-size: 0.82rem;
+    font-weight: 500;
+  }
+
+  .console-list__header {
+    padding: 15px 14px 4px;
+  }
+
+  .console-list {
+    height: clamp(23rem, 55vh, 34rem);
+  }
+
+  .console-layout {
+    gap: 12px;
+  }
+}

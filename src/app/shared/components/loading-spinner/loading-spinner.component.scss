@@ -1,0 +1,18 @@
+// Uses a compact ring that does not change button dimensions while saving.
+// The component template provides the accessible status label.
+.loading-spinner {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spinner-turn 700ms linear infinite;
+  vertical-align: -2px;
+}
+
+@keyframes spinner-turn {
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,32 @@
+// Status labels remain visible so color is never the only cue.
+.status-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 21px;
+  padding: 2px 9px;
+  border-radius: 999px;
+  font-size: 0.64rem;
+  font-weight: 700;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.status-chip--open {
+  background: #3478ed;
+  color: #fff;
+}
+
+.status-chip--escalated {
+  background: #f07839;
+  color: #fff;
+}
+
+.status-chip--auto_closed {
+  background: #9299a3;
+  color: #fff;
+}
+
+.status-chip--resolved {
+  background: #2eae67;
+  color: #fff;
+}

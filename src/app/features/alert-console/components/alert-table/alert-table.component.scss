@@ -1,0 +1,67 @@
+// The table owns both scroll directions; the console panel stays in place.
+.alert-table-wrap {
+  height: 100%;
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+
+.alert-table {
+  width: 100%;
+  min-width: 700px;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 0.8rem;
+}
+
+.alert-table thead th {
+  position: sticky;
+  z-index: 1;
+  top: 0;
+  padding: 11px 14px;
+  background: #f1f4f8;
+  color: #596579;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-align: left;
+  text-transform: uppercase;
+  letter-spacing: 0.045em;
+}
+
+.alert-table thead th:first-child {
+  padding-left: 18px;
+}
+
+.alert-table tbody tr {
+  cursor: pointer;
+}
+
+.alert-table tbody tr > * {
+  padding: 10px 14px;
+  border-bottom: 1px solid #edf0f4;
+  background: var(--color-paper);
+  text-align: left;
+  white-space: nowrap;
+}
+
+.alert-table tbody tr:hover > * {
+  background: #f7f9fc;
+}
+
+.alert-table tbody tr.alert-table__row--selected > * {
+  background: #edf4ff;
+}
+
+.alert-table tbody tr.alert-table__row--selected > :first-child {
+  box-shadow: inset 3px 0 var(--color-accent);
+}
+
+.alert-table tbody tr:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: -3px;
+}
+
+.alert-table tbody th {
+  padding-left: 18px;
+  color: #263449;
+  font-weight: 700;
+}

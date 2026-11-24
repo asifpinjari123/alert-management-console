@@ -1,0 +1,4 @@
+<!-- Status label for use in alert rows and details. -->
+<span class="status-chip" [class]="'status-chip status-chip--' + status().toLowerCase()">
+  {{ status().replace('_', ' ') }}
+</span>

@@ -1,0 +1,94 @@
+// Keeps validation feedback and save state close to the submit action.
+.resolve-form {
+  display: grid;
+  width: 100%;
+  min-width: 0;
+  gap: 8px;
+}
+
+.resolve-form label {
+  color: #354257;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.resolve-form input {
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 40px;
+  padding: 8px 11px;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-control);
+  color: #263449;
+  font-size: 0.82rem;
+}
+
+.resolve-form input[aria-invalid='true'] {
+  border-color: var(--color-danger);
+}
+
+.resolve-form__error {
+  margin: 0;
+  color: #c62832;
+  font-size: 0.76rem;
+}
+
+.resolve-form__count {
+  width: 100%;
+  box-sizing: border-box;
+  justify-self: stretch;
+  margin: 0;
+  color: #778398;
+  font-size: 0.72rem;
+  text-align: right;
+}
+
+.resolve-form__actions button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: var(--radius-control);
+  background: #27a864;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.resolve-form__actions button:hover:not(:disabled) {
+  background: #218e55;
+}
+
+.resolve-form__actions button:disabled {
+  background: #8eaa9b;
+}
+
+.resolve-form__actions {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.resolve-form__actions .resolve-form__cancel {
+  border: 1px solid var(--color-line);
+  background: #fff;
+  color: #596579;
+}
+
+.resolve-form__actions .resolve-form__cancel:hover:not(:disabled) {
+  background: #f3f5f8;
+}
+
+.resolve-form__actions .resolve-form__cancel:disabled {
+  background: #f3f5f8;
+  color: #9299a3;
+}
+
+@media (max-width: 600px) {
+  .resolve-form__actions button {
+    min-height: 42px;
+  }
+}

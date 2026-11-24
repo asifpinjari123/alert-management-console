@@ -1,0 +1,55 @@
+/* Establishes shared colors, typography, and browser defaults for the console.
+	 Component styles reuse these tokens to keep the operations UI consistent. */
+:root {
+  color-scheme: light;
+  font-family: Inter, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #202b3c;
+  background: #f2f5f9;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+
+  --color-ink: #202b3c;
+  --color-muted: #697586;
+  --color-line: #d8e0ea;
+  --color-paper: #fff;
+  --color-canvas: #f2f5f9;
+  --color-header: #1d2b3d;
+  --color-accent: #2f70e8;
+  --color-accent-soft: #edf4ff;
+  --color-danger: #d8333b;
+  --radius-panel: 10px;
+  --radius-control: 6px;
+  --shadow-panel: 0 3px 14px rgba(27, 40, 58, 0.06);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  background: var(--color-canvas);
+}
+
+button,
+select,
+textarea,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+:focus-visible {
+  outline: 3px solid #2f70e8;
+  outline-offset: 2px;
+}

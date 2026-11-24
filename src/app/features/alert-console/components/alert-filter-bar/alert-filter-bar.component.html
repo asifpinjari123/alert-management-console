@@ -1,0 +1,58 @@
+<!-- Controlled filters and live count for the alert table. -->
+<section class="filter-bar" aria-label="Alert filters">
+  <div class="filter-bar__controls">
+    <label>
+      <span>Status</span>
+      <select
+        #statusSelect
+        [value]="filters().status"
+        (change)="onStatusChange(statusSelect.value)"
+      >
+        <option [value]="allFilterValue">All statuses</option>
+        @for (status of statuses; track status) {
+          <option [value]="status">{{ status.replace('_', ' ') }}</option>
+        }
+      </select>
+    </label>
+
+    <label>
+      <span>Severity</span>
+      <select
+        #severitySelect
+        [value]="filters().severity"
+        (change)="onSeverityChange(severitySelect.value)"
+      >
+        <option [value]="allFilterValue">All severities</option>
+        @for (severity of severities; track severity) {
+          <option [value]="severity">{{ severity }}</option>
+        }
+      </select>
+    </label>
+
+    <label>
+      <span>Source</span>
+      <select
+        #sourceSelect
+        [value]="filters().source"
+        (change)="onSourceChange(sourceSelect.value)"
+      >
+        <option [value]="allFilterValue">All sources</option>
+        @for (source of sources; track source) {
+          <option [value]="source">{{ source }}</option>
+        }
+      </select>
+    </label>
+  </div>
+
+  <p class="filter-bar__count" aria-live="polite">
+    Showing <strong>{{ filteredCount() }}</strong> of {{ totalCount() }} alerts
+  </p>
+  <button
+    type="button"
+    class="filter-bar__clear"
+    [disabled]="!hasActiveFilters()"
+    (click)="clearFilters.emit()"
+  >
+    Clear filters
+  </button>
+</section>
