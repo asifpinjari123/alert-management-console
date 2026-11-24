@@ -80,7 +80,7 @@ npm run build
 npm test -- --watch=false
 ```
 
-Tests are located beside the store, utility functions, mock API service, resolution form, and whitespace validator. They cover filtering and sorting, history ordering, resolution success/failure and rollback, simulated save outcomes, form validation, and resolution-form states.
+Tests are located beside the store, utility functions, mock alert generator and API service, resolution form, and whitespace validator. They cover mock-data generation, combinable filtering and sorting, history ordering, resolution success/failure and rollback, simulated save outcomes, form validation, and resolution-form states.
 
 ## Architecture and Data Flow
 

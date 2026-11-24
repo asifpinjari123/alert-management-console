@@ -32,11 +32,11 @@ const ALERTS: Alert[] = [
 ];
 
 describe('filterAlerts', () => {
-  it('combines status and severity filters with AND semantics', () => {
+  it('combines status, severity, and source filters with AND semantics', () => {
     const results = filterAlerts(ALERTS, {
       status: 'OPEN',
       severity: 'HIGH',
-      source: 'ALL',
+      source: 'tracking-svc',
     });
 
     expect(results.map((alert) => alert.id)).toEqual(['AL-001']);

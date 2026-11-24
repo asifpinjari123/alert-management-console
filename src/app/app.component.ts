@@ -1,5 +1,5 @@
 /* Root component for the Alert Console application.
-  Phase 3 connects the feature page here. */
+  Composes the console page as the app's primary view. */
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { AlertConsolePageComponent } from './features/alert-console/alert-console.page';
 
